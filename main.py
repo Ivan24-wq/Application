@@ -1,24 +1,29 @@
-#Ввод массы
-weight = float(input("Введите массу тела (в кг): "))
-print(f"Введённая масса: {weight} кг")
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.label import Label
+from kivy.uix.textinput import TextInput
+from kivy.uix.button import Button
 
-#ввод роста
-heigh = float(input("Введите рост: (в м): "))
-print(f"Введённый рост: {heigh} м")
+class BMIApp(App):
+     def build(self):
+        self.layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
 
-#Считаем ИМТ
-IMT = weight / (heigh**2)
-if IMT <= 16:
-    print(f"Ваш индекс массы тела: {IMT:.2f} \nВыраженный дифицит массы тела!")
-elif IMT < 18.5:
-    print(f"Ваш индекс массы тела: {IMT:.2f} \nНедостаточная масса тела!")
-elif IMT <= 24.99:
-    print(f"Ваш индекс массы тела: {IMT:.2f} \nНорма")
-elif IMT <= 30:
-    print(f"Ваш индекс массы тела: {IMT:.2f} \nИзбыточная масса тела!")
-elif IMT <= 35:
-    print(f"Ваш индекс массы тела: {IMT:.2f} \nОжирение первой степени!")
-elif IMT <= 40:
-    print(f"Ваш индекс массы тела: {IMT:.2f} \nОжирение второй степени!")
-else:
-    print(f"Ваш индекс массы тела: {IMT:.2f} \nОжирение третьей степени!")
+        #Поле ввода массы
+        self.weight_input = TextInput(hint_text = "Введите массу (в кг)", multiline=False, input_filter = 'float')
+        self.layout.add_widget(self.weight_input)
+
+
+        #Поле ввода роста
+        self.height_input = TextInput(hint_text = "Введите рост (в м)", multiline=False, input_filter = 'float')
+        self.layout.add_widget(self.height_input)
+
+        #Кнопка посчета ИМТ
+        self.calculate_btton = Button(text = "Расчет", on_press=self.calculate_bmi)
+        self.layout.add_widget(self.calculate_btton)
+
+        return self.layout
+        
+    
+#Запуск
+if __name__ == "__main__":
+    BMIApp().run()
