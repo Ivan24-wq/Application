@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="ExtraText">
+    <item
+        android:id="@+id/action_settings"
+        android:title="Настройки"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        tools:ignore="AppCompatResource" />
+    <item
+        android:id="@+id/action_theme"
+        android:title="Сменить тему"
+        android:orderInCategory="101"
+        android:showAsAction="never"
+        tools:ignore="AppCompatResource" />
+
+
+</menu>
