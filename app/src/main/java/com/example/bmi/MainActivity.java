@@ -1,19 +1,23 @@
 package com.example.bmi;
 
-import com.example.bmi.R;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import android.content.SharedPreferences;
+import android.widget.Toast;
+import android.view.MenuItem;
+import android.view.Menu;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.bmi.R;
 
+
+
 public class MainActivity extends AppCompatActivity {
+
 
     private EditText weightInput;
     private EditText heightInput;
@@ -22,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Настройки
+        SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
+        boolean darkMode = prefs.getBoolean("dark_mode", false);
+        setTheme(darkMode ? R.style.AppTheme_Dark : R.style.AppTheme_White);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -42,6 +51,39 @@ public class MainActivity extends AppCompatActivity {
                 calculateBMI();
             }
         });
+    }
+
+    // Меню
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            openSettings();
+            return true;
+        } else if (id == R.id.action_theme) {
+            toggleTheme();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    private void openSettings() {
+        Toast.makeText(this, "Открыть настроки", Toast.LENGTH_SHORT).show();
+    }
+
+    private void toggleTheme(){
+        SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
+        boolean darkMode = prefs.getBoolean("dark_mode", false);
+        prefs.edit().putBoolean("dark_mode", !darkMode).apply();
+        recreate();
     }
 
     private void calculateBMI() {
