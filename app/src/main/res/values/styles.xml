@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme_Dark">ddark_theme</style>
 
-    <style name="AppTheme_White">white_theme</style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="actionBarStyle">@style/CenteredActionBar</item>
+    </style>
+
+
+    <style name="CenteredActionBar" parent="Widget.AppCompat.ActionBar">
+        <item name="android:gravity">center</item>
+        <item name="titleTextStyle">@style/ActionBarTitleText</item>
+    </style>
+
+
+    <style name="ActionBarTitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+    <style name="AppTheme_Dark">
+
+    </style>
+
+
+    <style name="AppTheme_White">
+
+    </style>
+
 </resources>

@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.Menu;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.bmi.R;
+import androidx.appcompat.app.AppCompatDelegate;
 
 
 
@@ -82,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
     private void toggleTheme(){
         SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
         boolean darkMode = prefs.getBoolean("dark_mode", false);
+        AppCompatDelegate.setDefaultNightMode(darkMode ? AppCompatDelegate.MODE_NIGHT_NO : AppCompatDelegate.MODE_NIGHT_YES);
+
         prefs.edit().putBoolean("dark_mode", !darkMode).apply();
         recreate();
     }
