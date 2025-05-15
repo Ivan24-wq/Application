@@ -7,13 +7,20 @@
         android:title="Настройки"
         android:orderInCategory="100"
         android:showAsAction="never"
-        tools:ignore="AppCompatResource" />
-    <item
-        android:id="@+id/action_theme"
-        android:title="Сменить тему"
-        android:orderInCategory="101"
-        android:showAsAction="never"
-        tools:ignore="AppCompatResource" />
-
-
+        tools:ignore="AppCompatResource" >
+        <menu>
+            <item
+                android:id="@+id/action_theme"
+                android:title="Сменить тему"
+                android:orderInCategory="101"
+                android:showAsAction="never"
+                tools:ignore="AppCompatResource" />
+            <item
+                android:id="@+id/action_language"
+                android:title="Выбрать язык"
+                android:orderInCategory="101"
+                android:showAsAction="never"
+                tools:ignore="AppCompactResources" />
+        </menu>
+    </item>
 </menu>
