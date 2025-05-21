@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string name="app_name">Gesundheit+</string>
+        <string name="settings">Einstellungen</string>
+        <string name="change_theme">Thema ändern</string>
+        <string name="choose_language">Sprache wählen</string>
+        <string name="russian">Russisch</string>
+        <string name="english">Englisch</string>
+        <string name="german">Deutsch</string>
+
+</resources>

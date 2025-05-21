@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Здоровье+</string>
+    <string name="app_name" translatable="false">Здоровье+</string>
+    <string name="settings" translatable="false">Настройки</string>
+    <string name="change_theme" translatable="false">Сменить тему</string>
+    <string name="choose_language" translatable="false">Выбрать язык</string>
+    <string name="russian" translatable="false">Русский</string>
+    <string name="english" translatable="false">Английский</string>
+    <string name="german" translatable="false">Немецкий</string>
 </resources>
