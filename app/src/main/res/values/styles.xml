@@ -15,6 +15,7 @@
 
     <style name="ActionBarTitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:gravity">center</item>
+        <item name="android:popupBackground">#A0522D</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">18sp</item>
     </style>
@@ -28,6 +29,4 @@
     <style name="AppTheme_White">
 
     </style>
-
-
 </resources>

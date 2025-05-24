@@ -31,9 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Применяем язык и тему перед созданием View
-        applyLocale();
-
+        
         SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
         boolean darkMode = prefs.getBoolean("dark_mode", false);
         setTheme(darkMode ? R.style.AppTheme_Dark : R.style.AppTheme_White);
@@ -70,46 +68,10 @@ public class MainActivity extends AppCompatActivity {
         } else if (id == R.id.action_theme) {
             toggleTheme();
             return true;
-        } else if (id == R.id.action_language_russian) {
-            setLocale("ru");
-            return true;
-        } else if (id == R.id.action_language_english){
-            setLocale("en");
-            return true;
-        } else if (id == R.id.action_language_german){
-            setLocale("de");
-            return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void setLocale(String languageCode) {
-        // Сохраняем выбранный язык
-        SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
-        prefs.edit().putString("language", languageCode).apply();
-
-        // Применяем язык
-        applyLocale();
-    }
-
-    private void applyLocale() {
-        SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
-        String language = prefs.getString("language", "en"); // по умолчанию английский
-
-        Locale locale = new Locale(language);
-        Locale.setDefault(locale);
-
-        Resources resources = getResources();
-        Configuration config = resources.getConfiguration();
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            config.setLocale(locale);
-        } else {
-            config.locale = locale;
-        }
-
-        resources.updateConfiguration(config, resources.getDisplayMetrics());
-    }
 
     private void openSettings() {
         Toast.makeText(this, "Открыть настроки", Toast.LENGTH_SHORT).show();
@@ -146,19 +108,25 @@ public class MainActivity extends AppCompatActivity {
             String resultText;
 
             if (bmi <= 16) {
-                resultText = String.format("Ваш индекс массы тела: %.2f\nВыраженный дефицит массы тела!", bmi);
+                double normalMinWeight = 16 * height * height;
+                resultText = String.format("Ваш индекс массы тела: %.2f\nВыраженный дефицит массы тела!\nВам нужно набрать как минимум %.2f кг до нормы", bmi, normalMinWeight - weight);
             } else if (bmi < 18.5) {
-                resultText = String.format("Ваш индекс массы тела: %.2f\nНедостаточная масса тела!", bmi);
+                double normalMinWeight = 18.5 * height * height;
+                resultText = String.format("Ваш индекс массы тела: %.2f\nНедостаточная масса тела!\nВам нужно набрать как минимум %.2f кг до нормы", bmi, normalMinWeight - weight);
             } else if (bmi <= 24.99) {
                 resultText = String.format("Ваш индекс массы тела: %.2f\nНорма", bmi);
             } else if (bmi <= 30) {
-                resultText = String.format("Ваш индекс массы тела: %.2f\nИзбыточная масса тела!", bmi);
+                double noramlMaxWeight = 24.99 * height * height;
+                resultText = String.format("Ваш индекс массы тела: %.2f\nИзбыточная масса тела!\nВам нужно сбросить как минимум %.2f кг до нормы", bmi, weight - noramlMaxWeight);
             } else if (bmi <= 35) {
-                resultText = String.format("Ваш индекс массы тела: %.2f\nОжирение первой степени!", bmi);
+                double noramlMaxWeight = 24.99 * height * height;
+                resultText = String.format("Ваш индекс массы тела: %.2f\nОжирение первой степени!\n Вам нужно сбросить как минимум %.2f кг до нормы", bmi, weight - noramlMaxWeight);
             } else if (bmi <= 40) {
-                resultText = String.format("Ваш индекс массы тела: %.2f\nОжирение второй степени!", bmi);
+                double noramlMaxWeight = 24.99 * height * height;
+                resultText = String.format("Ваш индекс массы тела: %.2f\nОжирение второй степени!\nВам нужно сбросить как минимум %.2f кг до нормы", bmi, weight * noramlMaxWeight);
             } else {
-                resultText = String.format("Ваш индекс массы тела: %.2f\nОжирение третьей степени!", bmi);
+                double noramlMaxWeight = 24.99 * height * height;
+                resultText = String.format("Ваш индекс массы тела: %.2f\nОжирение третьей степени!\nВам нужно сбросить как минимум %.2f кг до нормы", bmi, weight - noramlMaxWeight);
             }
 
             resultLabel.setText(resultText);

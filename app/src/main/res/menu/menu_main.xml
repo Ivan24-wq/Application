@@ -6,6 +6,7 @@
         android:id="@+id/action_settings"
         android:title="Настройки"
         android:orderInCategory="100"
+        android:background="#A0522D"
         android:showAsAction="never"
         tools:ignore="AppCompatResource" >
         <menu>
@@ -14,30 +15,8 @@
                 android:title="Сменить тему"
                 android:orderInCategory="101"
                 android:showAsAction="never"
-                tools:ignore="AppCompatResource" />
-            <item
-                android:title="Выбрать язык"
-                android:orderInCategory="101"
-                android:showAsAction="never" >
-                <menu>
-                    <item
-                        android:id="@+id/action_language_russian"
-                        android:title="Русский"
-                        android:orderInCategory="102"
-                        android:showAsAction="never" />
-                    <item
-                        android:id="@+id/action_language_english"
-                        android:title="English"
-                        android:orderInCategory="103"
-                        android:showAsAction="never" />
-                    <item
-                        android:id="@+id/action_language_german"
-                        android:title="Deutsch"
-                        android:orderInCategory="104"
-                        android:showAsAction="never" />
-                </menu>
+                tools:ignore="AppCompatResource" >
             </item>
         </menu>
     </item>
 </menu>
-
