@@ -109,24 +109,24 @@ public class MainActivity extends AppCompatActivity {
 
             if (bmi <= 16) {
                 double normalMinWeight = 16 * height * height;
-                resultText = String.format("Ваш индекс массы тела: %.2f\nВыраженный дефицит массы тела!\nВам нужно набрать как минимум %.2f кг до нормы", bmi, normalMinWeight - weight);
+                resultText = String.format("Ваш индекс массы тела: %.2f\n⚠\uFE0FВыраженный дефицит массы тела!\n❗\uFE0FВам нужно набрать как минимум %.2f кг до нормы", bmi, normalMinWeight - weight);
             } else if (bmi < 18.5) {
                 double normalMinWeight = 18.5 * height * height;
-                resultText = String.format("Ваш индекс массы тела: %.2f\nНедостаточная масса тела!\nВам нужно набрать как минимум %.2f кг до нормы", bmi, normalMinWeight - weight);
+                resultText = String.format("Ваш индекс массы тела: %.2f\n⚠\uFE0FНедостаточная масса тела!\n❗\uFE0FВам нужно набрать как минимум %.2f кг до нормы", bmi, normalMinWeight - weight);
             } else if (bmi <= 24.99) {
-                resultText = String.format("Ваш индекс массы тела: %.2f\nНорма", bmi);
+                resultText = String.format("Ваш индекс массы тела: %.2f\n✅Норма", bmi);
             } else if (bmi <= 30) {
                 double noramlMaxWeight = 24.99 * height * height;
-                resultText = String.format("Ваш индекс массы тела: %.2f\nИзбыточная масса тела!\nВам нужно сбросить как минимум %.2f кг до нормы", bmi, weight - noramlMaxWeight);
+                resultText = String.format("Ваш индекс массы тела: %.2f\n⚠\uFE0FИзбыточная масса тела!\n❗\uFE0FВам нужно сбросить как минимум %.2f кг до нормы", bmi, weight - noramlMaxWeight);
             } else if (bmi <= 35) {
                 double noramlMaxWeight = 24.99 * height * height;
-                resultText = String.format("Ваш индекс массы тела: %.2f\nОжирение первой степени!\n Вам нужно сбросить как минимум %.2f кг до нормы", bmi, weight - noramlMaxWeight);
+                resultText = String.format("Ваш индекс массы тела: %.2f\n⚠\uFE0FОжирение первой степени!\n❗\uFE0FВам нужно сбросить как минимум %.2f кг до нормы", bmi, weight - noramlMaxWeight);
             } else if (bmi <= 40) {
                 double noramlMaxWeight = 24.99 * height * height;
-                resultText = String.format("Ваш индекс массы тела: %.2f\nОжирение второй степени!\nВам нужно сбросить как минимум %.2f кг до нормы", bmi, weight * noramlMaxWeight);
+                resultText = String.format("Ваш индекс массы тела: %.2f\n⚠\uFE0FОжирение второй степени!\n❗\uFE0FВам нужно сбросить как минимум %.2f кг до нормы", bmi, weight * noramlMaxWeight);
             } else {
                 double noramlMaxWeight = 24.99 * height * height;
-                resultText = String.format("Ваш индекс массы тела: %.2f\nОжирение третьей степени!\nВам нужно сбросить как минимум %.2f кг до нормы", bmi, weight - noramlMaxWeight);
+                resultText = String.format("Ваш индекс массы тела: %.2f\n⚠\uFE0FОжирение третьей степени!\n❗\uFE0FВам нужно сбросить как минимум %.2f кг до нормы", bmi, weight - noramlMaxWeight);
             }
 
             resultLabel.setText(resultText);
